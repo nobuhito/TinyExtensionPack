@@ -1,0 +1,27 @@
+{
+"name": "TinyExtensionPack",
+"version": "1.0",
+"description": "細かい機能を集めた拡張パック",
+"icons": {
+     "128": "icon128.png",
+     "48": "icon48.png"
+},
+"content_scripts": [
+    {
+        "js": [
+            "jquery-1.8.3.min.js",
+            "script.js",
+            "google_plus_mark_for_public.js",
+            "500px_small_image.js",
+            "instagram_3column.js"
+        ],
+	"run_at": "document_end",
+        "matches": [
+            "https://plus.google.com/*",
+            "http://500px.com/*",
+            "http://instagram.com/*"
+        ]
+    }
+],
+"manifest_version": 2
+}
