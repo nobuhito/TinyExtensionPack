@@ -1,6 +1,6 @@
 {
     "name": "TinyExtensionPack",
-    "version": "1.11",
+    "version": "1.12",
     "description": "細かい機能を集めた拡張パック",
     "options_page": "options.html",
     "icons": {
