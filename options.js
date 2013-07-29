@@ -1,7 +1,3 @@
-function $(id) {
-    return document.getElementById(id);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     chrome.storage.sync.get('config', function(data) { build(data) });
 });
@@ -10,43 +6,66 @@ function build(data) {
     var html = '';
 
     for (var i in data.config) {
-        var p = data.config[i];
-        var checked = (p.use)? ' checked="checked"': '';
-
-        html += '<div class="item">';
-        html += '<input type="checkbox" id="' + i + '"' + checked + '">';
-        html += '<label class="title" for="' + i +'">' + i + '</label>';
-        html += '<div class="url"><a href="' + p.url + '">';
-        html +=  p.url;
-        html += '</a></div>';
-        html += '<div class="description">' + p.description + '</div>';
-        if (p.option != undefined && p.option.type == 'color') {
-            html += '<div class="option">';
-            html += '<div style="float:left">' + p.option.caption + ': </div>';
-            html += '<input type="color"';
-            html +=       ' id="option_' + i + '"';
-            html +=       ' value="' + p.option.value + '">';
-            html += '</div>';
-        }
-        html = html + '</div>';
-    }
-    $('list').innerHTML = html;
-
-    for (var i in data.config) {
         var config = data.config;
+        var p = data.config[i];
 
-        if (config[i].option != undefined && config[i].option.type == 'color') {
-            var id = i;
-            $('option_' + i).addEventListener('change', function() {
-                config[id].option.value = $(this.id).value;
-                chrome.storage.sync.set({config: config});
-            });
+        var item = $('<div />').addClass('item');
+
+        var check = $('<input />', {
+            id: i,
+            type: 'checkbox',
+            checked: ((p.use)? 'checked': undefined)
+        }).bind('change', function() {
+            if ($("#" + this.id).is(':checked')) {
+                config[this.id].use = true;
+            } else {
+                config[this.id].use = undefined;
+            }
+            chrome.storage.sync.set({config: config});
+        }).appendTo(item);
+
+        var label = $('<label />', {
+            class: 'title',
+            for: i,
+            text: i,
+        }).appendTo(item);
+
+        var link = $('<div />', {
+            class: 'url',
+            html: '<a href="' + p.url + '">' + p.url + '</a>'
+        }).appendTo(item);
+
+        var discription = $('<div/>', {
+            class: 'description',
+            text: p.description
+        }).appendTo(item);
+
+        var option = $('<div />').addClass('option');
+        if (p.option != undefined) {
+            $('<div />')
+                .css('float', 'left')
+                .text(p.option.caption + ': ')
+                .appendTo(option);
+            var type;
+            if (p.option.type == 'string') {
+                type = 'text';
+            }
+            else if (p.option.type == 'color') {
+                type = 'color';
+            }
+
+            $('<input type="' + type + '" />')
+                .attr('id', "option_" + i)
+                .attr('value', p.option.value)
+                .bind('change', function() {
+                    var i = this.id.replace(/^option_/, '');
+                    config[i].option.value = $("#" + this.id).val();
+                    chrome.storage.sync.set({config: config});
+                })
+                .appendTo(option)
+                $(option).appendTo(item);
         }
 
-
-        $(i).addEventListener('click', function() {
-            config[this.id].use = ($(this.id).checked)? true: undefined;
-            chrome.storage.sync.set({config: config});
-        }, false);
+        $('#list').append(item);
     }
 }
