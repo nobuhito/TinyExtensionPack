@@ -1,6 +1,6 @@
 {
     "name": "TinyExtensionPack",
-    "version": "1.0",
+    "version": "1.11",
     "description": "細かい機能を集めた拡張パック",
     "options_page": "options.html",
     "icons": {
@@ -15,6 +15,7 @@
             "instagram_3column.js",
             "google_plus_bgcolor_change.js",
             "google_plus_notification_icon_change.js",
+            "google_plus_hidden_plusone.js",
             "background.js"
         ]
     },
@@ -28,6 +29,7 @@
                 "instagram_3column.js",
                 "google_plus_bgcolor_change.js",
                 "google_plus_notification_icon_change.js",
+                "google_plus_hidden_plusone.js",
                 "script.js"
             ],
             "run_at": "document_end",
