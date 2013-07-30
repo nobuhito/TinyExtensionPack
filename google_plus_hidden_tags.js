@@ -1,4 +1,4 @@
-var module = 'google_plus_hidden_tags';
+module = 'google_plus_hidden_tags';
 plugin[module] = {
     url: "https://plus.google.com",
     description: 'Google+で指定したタグをストリームから消す',
