@@ -1,6 +1,6 @@
 {
     "name": "TinyExtensionPack",
-    "version": "1.12",
+    "version": "2.1",
     "description": "細かい機能を集めた拡張パック",
     "options_page": "options.html",
     "icons": {
@@ -16,6 +16,7 @@
             "google_plus_bgcolor_change.js",
             "google_plus_notification_icon_change.js",
             "google_plus_hidden_plusone.js",
+            "google_plus_hidden_tags.js",
             "background.js"
         ]
     },
@@ -30,6 +31,7 @@
                 "google_plus_bgcolor_change.js",
                 "google_plus_notification_icon_change.js",
                 "google_plus_hidden_plusone.js",
+                "google_plus_hidden_tags.js",
                 "script.js"
             ],
             "run_at": "document_end",
