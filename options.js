@@ -46,16 +46,18 @@ function build(data) {
                 .css('float', 'left')
                 .text(p.option.caption + ': ')
                 .appendTo(option);
-            var type;
-            if (p.option.type == 'string') {
-                type = 'text';
+            var o = {};
+            if (p.option.type == 'text') {
+                o.type = 'text';
+                o.size = '300px';
             }
             else if (p.option.type == 'color') {
-                type = 'color';
+                o.type = 'color';
             }
 
-            $('<input type="' + type + '" />')
+            $('<input type="' + o.type + '" />')
                 .attr('id', "option_" + i)
+                .css('width', ((o.size)? o.size: undefined))
                 .attr('value', p.option.value)
                 .bind('change', function() {
                     var i = this.id.replace(/^option_/, '');
