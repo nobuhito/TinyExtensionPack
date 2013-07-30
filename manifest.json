@@ -2,6 +2,7 @@
     "name": "TinyExtensionPack",
     "version": "2.1",
     "description": "細かい機能を集めた拡張パック",
+    "homepage_url": "https://chrome.google.com/webstore/detail/tinyextensionpack/bedgomjfbghlbgkmlbpjkhaigecagdng",
     "options_page": "options.html",
     "icons": {
         "128": "icon128.png",
