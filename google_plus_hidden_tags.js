@@ -27,7 +27,7 @@ plugin[module] = {
     },
     option: {
         type: 'text',
-        value: 'cancam',
+        value: '',
         caption: 'タグをカンマまたはスペース区切りで指定',
     }
 };
