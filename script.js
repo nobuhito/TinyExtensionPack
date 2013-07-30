@@ -19,7 +19,6 @@ function addStyles(p) {
             var key = j.replace(/([A-Z])/g, "-$1").toLowerCase();
             var re = /^assets(.*)$/;
             var val = p.styles[i][j].replace(re, function(str, p1) {
-                console.log(p1);
                 return ["url('chrome-extension://",  id,
                         "/assets",
                         "/" + p.name + p1 + "')"].join('');
@@ -81,18 +80,18 @@ $(document).ready( function() {
                 }
 
                 if (p.batch) {
-                    setTimeout( function(target) {
+                    setTimeout( function(target, option) {
                         log('batch start');
                         target.batch(option);
                         log('batch end');
-                    }, (p.delay || def_delay), plugin[i]);
+                    }, (p.delay || def_delay), plugin[i], option);
 
                     if (p.interval > 0) {
-                        setInterval( function(target) {
+                        setInterval( function(target, option) {
                             log('batch start');
                             target.batch(option);
                             log('batch end');
-                        }, (p.interval || interval), plugin[i]);
+                        }, (p.interval || interval), plugin[i], option);
                     }
                 }
 
