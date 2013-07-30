@@ -6,10 +6,10 @@ plugin[module] = {
     batch: function() {
         var target = $(".B5:not(." + module + ")");
         target
-	    .addClass(module)
-	    .closest("div[id]").find(".Kj,.bI").each( function() {
-	        $(this).css('backgroundColor', '#F8F8F8').text('Public...');
-	    });
+	          .addClass(module)
+	          .closest("div[id]").find(".Kj,.bI").each( function() {
+	              $(this).css('backgroundColor', '#F8F8F8').text('Public...');
+	          });
     },
     option: {
         type: 'color',
