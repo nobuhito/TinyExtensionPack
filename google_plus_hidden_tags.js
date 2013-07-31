@@ -4,7 +4,7 @@ plugin[module] = {
     description: 'Google+で指定したタグをストリームから消す',
     interval: 1000,
     batch: function(option) {
-        var tags = option.replace(/[,\s]+/g, ',').split(/[,\s]/);
+        var tags = option.replace(/#/g, '').replace(/[,\s]+/g, ',').split(/[,\s]/);
 
         var numParent = function(elem, num) {
             var e = elem;
@@ -14,6 +14,7 @@ plugin[module] = {
             return e;
         };
 
+        // 通常の共有
         $('[data-topicid]:not(.' + module + ')')
             .each(function() {
                 $(this).addClass(module);
@@ -23,6 +24,36 @@ plugin[module] = {
                 return (tags.indexOf(tag) > -1)? true: false;
             }).each( function() {
                 numParent(this, 7).css('display', 'none');
+            });
+
+        // 再共有
+        $('a.ot-hashtag:not(.' + module + ')')
+            .each( function() {
+                $(this).addClass(module);
+            }).filter( function() {
+                var tag = $(this).text().replace(/#/, '');
+                return (tags.indexOf(tag) > -1)? true: false;
+            }).each( function() {
+                var elem = numParent(this, 7);
+                if (elem[0].id.match(/^update/)) {
+                    elem.css('display', 'none');
+                } else {
+                    numParent(this, 9)
+                        .find('div.gv > article')
+                        .each( function(i, child) {
+                            if (i == 0) {
+                                $(child).children().each( function(i) {
+
+                                    if (i > 0) {
+                                        $(this).html('');
+                                    } else {
+                                        var s = '-- Delete by specified tags. --';
+                                        $(this).children().eq(1).text(s);
+                                    }
+                                });
+                            }
+                        });
+                }
             });
     },
     option: {
