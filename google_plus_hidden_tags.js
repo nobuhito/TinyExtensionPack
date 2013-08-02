@@ -53,6 +53,20 @@ plugin[module] = {
                                 });
                             }
                         });
+                    numParent(this, 9)
+                        .find('div.gv')
+                        .each( function(i, child) {
+                            if (i == 0) {
+                                $(child).children().each( function(i) {
+                                    if (i == 1) {
+                                        var s = '-- Delete by specified tags. --';
+                                        $(this).children().eq(1).text(s);
+                                    } else if (i > 1) {
+                                        $(this).html('');
+                                    }
+                                });
+                            }
+                        });
                 }
             });
     },
