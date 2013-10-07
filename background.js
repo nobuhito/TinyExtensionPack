@@ -43,9 +43,3 @@ chrome.runtime.onInstalled.addListener(
         setConfig();
     }
 );
-
-chrome.runtime.onUpdateAvailable.addListener(
-    function() {
-        setConfig();
-    }
-);
