@@ -4,10 +4,10 @@ plugin[module] = {
     description: 'Google+の一般投稿コメント入力欄の色とキャプションを変更する',
     interval: 10000,
     batch: function(option) {
-        var target = $(".B5:not(." + module + ")");
+        var target = $(".Z7:not(." + module + ")");
         target
 	          .addClass(module)
-	          .closest("div[id]").find(".Kj,.bI").each( function() {
+	          .closest("div[id]").find(".Js,.Nt").each( function() {
 	              $(this).css('backgroundColor', option).text('Public...');
 	          });
     },

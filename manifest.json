@@ -1,6 +1,6 @@
 {
     "name": "TinyExtensionPack",
-    "version": "2.1.2",
+    "version": "2.2",
     "description": "細かい機能を集めた拡張パック",
     "homepage_url": "https://chrome.google.com/webstore/detail/tinyextensionpack/bedgomjfbghlbgkmlbpjkhaigecagdng",
     "options_page": "options.html",
@@ -15,7 +15,6 @@
             "500px_small_image.js",
             "instagram_3column.js",
             "google_plus_bgcolor_change.js",
-            "google_plus_notification_icon_change.js",
             "google_plus_hidden_plusone.js",
             "google_plus_hidden_tags.js",
             "background.js"
@@ -30,7 +29,6 @@
                 "500px_small_image.js",
                 "instagram_3column.js",
                 "google_plus_bgcolor_change.js",
-                "google_plus_notification_icon_change.js",
                 "google_plus_hidden_plusone.js",
                 "google_plus_hidden_tags.js",
                 "script.js"

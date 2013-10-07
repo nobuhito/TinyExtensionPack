@@ -4,7 +4,7 @@ plugin[module] = {
     description: 'Google+で他人が+1したものをストリームから消す',
     interval: 1000,
     batch: function() {
-        $('div.tE9bQe:not(.' + module + ')').each(function() {
+        $('div.kW:not(.' + module + ')').each(function() {
             $(this).addClass(module);
             var parent = $(this).parent().parent();
             $('#' + parent.attr('id'))
